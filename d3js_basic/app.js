@@ -2,7 +2,6 @@
  * Here all d3js code must be written.
  * We can access all element from the DOM using d3js.
  */
-
 /**
  * Difference between js vanilla select and d3js select
  */
@@ -34,15 +33,20 @@ console.log(y_2);
 const svg = d3.select('svg')
     .attr('height', '500')
     .attr('width','500');
+/**
+ * Grouping -> useful for applying one change to all elements
+ * We will put every shape into one group
+ */
+const group = svg.append('g'); // it only work with 'g', not other string!
 // rectancle
-svg.append('rect')
+group.append('rect')
     .attr('x',50)
     .attr('y',125)
     .attr('fill','#FFC107')
     .attr('height', '200')
     .attr('width','100')
 // circle
-svg.append('circle')
+group.append('circle')
     .attr('cx',100)
     .attr('cy',60)
     .attr('fill','#FFEB3B')
@@ -50,9 +54,14 @@ svg.append('circle')
 /**
  * Appending a text into svg
  */
-svg.append('text')
-    .attr('x',60)
-    .attr('y',345)
+group.append('text')
+    .attr('x',50)
+    .attr('y',390)
     .attr('fill','#000')
-    .text('Hello world!')
-    .style('font-family', 'arial'); // apply css style directly
+    .text('Hello D3!') // string 
+    .style('font-family', 'Lobster') // apply css style directly
+    .style('font-size','2em');
+/**
+ * Example of using group
+ */
+group.attr('transform','translate(100, 100)');
